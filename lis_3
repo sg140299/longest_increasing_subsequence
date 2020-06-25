@@ -14,6 +14,7 @@ int main(){
     }
     for(int i=0;i<n;i++){
         int pos=upper_bound(dp.begin(),dp.end(),v[i])-dp.begin();
+        if(dp[pos]<v[i])
        dp[pos]=v[i];
     }
     
