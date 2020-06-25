@@ -1,0 +1,28 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main(){
+    int n;
+    cin>>n;
+    vector<int> v(n);
+    for(int i=0;i<n;i++){
+        cin>>v[i];
+    }
+    vector<int> dp(n+1);
+    dp[0]=-1e9;
+    for(int i=1;i<n+1;i++){
+        dp[i]=1e9;
+    }
+    for(int i=0;i<n;i++){
+        int curr=v[i];
+        for(int pos=0;pos<n;pos++){
+            if(dp[pos]<curr && curr<dp[pos+1]){
+                dp[pos+1]=curr;
+            }
+        }
+    }
+    
+    for(int i=n;i>=0;i--){
+        if(dp[i]!=1e9){cout<<i;break;}
+    }
+    return 0;
+}
